@@ -20,7 +20,7 @@ public class TrappingRainWater {
 			for(int j=0;j<N;j++)  
 			{
 				a[j] = scan.nextInt();
-			}
+			}    
 			findWater(a);
 		}
 	
