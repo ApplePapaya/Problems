@@ -17,7 +17,7 @@ public class TrappingRainWater {
 		{
 			int N = scan.nextInt();
 			int[] a = new int[N];
-			for(int j=0;j<N;j++)
+			for(int j=0;j<N;j++)  
 			{
 				a[j] = scan.nextInt();
 			}
