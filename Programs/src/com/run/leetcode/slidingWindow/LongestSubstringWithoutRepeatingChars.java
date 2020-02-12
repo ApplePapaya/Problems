@@ -42,10 +42,15 @@ public class LongestSubstringWithoutRepeatingChars {
 		 * slidingWindow) .forEach(System.out :: println);
 		 */
 		
+		Map<Character, Integer> map = new HashMap<>();
+		map.put('c', 10);
+		System.out.println(map);
+		map.put('c', 100);
+		System.out.println(map);
 		
  		System.out.println(bruteForce("pwwkew"));
 		System.out.println(slidingWindow("pwwkew"));
-		System.out.println(slidingWindowOptimized("pwwkew"));
+		System.out.println(slidingWindowOptimized("abcdefdhbaaaaa"));
 		System.out.println(usingAscii("pwwkew"));
 
 	}
@@ -79,8 +84,11 @@ Space complexity (Table): O(m)O(m). mm is the size of the charset.
 			int n = input.length();
 			Map<Character, Integer> map = new HashMap<Character, Integer>();
 			for(int i =0,j=0; j<n;j++) {
+				System.out.println(map);
 				if(map.containsKey(input.charAt(j)))
 				{
+					System.out.println(" i value : " + i +"    prev i val :" +  map.get(input.charAt(j)));
+					
 					i = Math.max(i, map.get(input.charAt(j)));
 				}
 				map.put(input.charAt(j), j+1);// Here since we havej+1 we need the same below too. Else we can 
@@ -111,7 +119,7 @@ Space complexity (Table): O(m)O(m). mm is the size of the charset.
 			{
 				set.add(ch);
 				j++;
-				maxLength = Math.max(maxLength, j-i);
+				maxLength = Math.max(maxLength, j-i);//since j incremented above, we are not doing +1 here
 			}else {
 				set.remove(input.charAt(i));
 				i++;

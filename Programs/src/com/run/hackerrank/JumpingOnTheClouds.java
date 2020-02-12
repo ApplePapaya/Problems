@@ -1,5 +1,8 @@
 package com.run.hackerrank;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class JumpingOnTheClouds {
 
 	public static void main(String[] args) {
@@ -9,10 +12,15 @@ public class JumpingOnTheClouds {
 		int n = 10;
 		StringBuilder str= new StringBuilder(n);
 		String fmt = "%"+n+"s\n";
+		Map<String, Integer> map = new HashMap<>();
+		map.put("abc",100);
+		map.put("abc",10000);
+		System.out.println(map);
 		for(int i =0;i<10 ;i++) {
 			str.append("#");
 			System.out.printf(fmt,str);
 		}
+		
 
 	}
 

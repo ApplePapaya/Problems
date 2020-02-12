@@ -28,6 +28,7 @@ public class LongestValidParantheses {
 			}else {// Since string contains only ( or )
 				stack.push(new int[] {0,i});
 			}
+			//System.out.println(stack);
 		}
 		return result;
 	}

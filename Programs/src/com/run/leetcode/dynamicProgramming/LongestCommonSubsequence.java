@@ -1,4 +1,4 @@
-package com.run.geekForgeeks;
+package com.run.leetcode.dynamicProgramming;
 
 import java.util.Arrays;
 
