@@ -1,4 +1,4 @@
-package com.run.leetcode;
+package com.run.leetcode.palindrome;
 //check if the number is palindrome or not
 public class isNumberPalindrome {
 

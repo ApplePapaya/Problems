@@ -15,7 +15,7 @@ public class RemoveVowelsFromString {
 		StringBuilder sb = new StringBuilder();
 		Set<Character> set  = new HashSet<>();
 		set.addAll(Arrays.asList('a','e','i','o','u','A','E','I','O','U'));
-		//Another way of initializing
+		//Another way of initializingR
 		Set<Character> set2 = new HashSet<>(Arrays.asList('a','e','i','o','u','A','E','I','O','U'));
 		
 		for(char c : s.toCharArray()) {
