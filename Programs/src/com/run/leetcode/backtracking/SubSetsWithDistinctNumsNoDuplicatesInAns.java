@@ -40,11 +40,12 @@ public class SubSetsWithDistinctNumsNoDuplicatesInAns {
 
 	private static void backtrack(List<List<Integer>> result, List<Integer> tempList, int[] nums, int start) {
 		result.add(new ArrayList<>(tempList));
-		System.out.println(tempList);
+		System.out.println("TempList : "+tempList);
 		for(int i = start; i < nums.length; i++) {
 			tempList.add(nums[i]);
+			System.out.println("##Start :"+ start +   "   i :" + i +"  templist : " + tempList );
 			backtrack(result, tempList, nums, i+1);
-			System.out.println("i :" + i +"  templist : " + tempList +"  templist.remove : "+ tempList.get(tempList.size()-1));
+			System.out.println("Start :"+ start +   "   i :" + i +"  templist : " + tempList +"  templist.remove : "+ tempList.get(tempList.size()-1));
 			tempList.remove(tempList.size()-1);
 		}
 		
