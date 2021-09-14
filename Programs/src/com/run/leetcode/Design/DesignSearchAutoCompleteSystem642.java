@@ -55,7 +55,7 @@ import java.util.List;
 
 **/
  public class DesignSearchAutoCompleteSystem642 {
-    class mTrieNode implements Comparable<TrieNode> {
+    class TrieNode implements Comparable<TrieNode> {
         TrieNode[] children;
         String s;
         int times;
