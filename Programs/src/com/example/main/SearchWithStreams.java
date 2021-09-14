@@ -10,10 +10,16 @@ import java.util.stream.Stream;
 public class SearchWithStreams {
 
     public static void main(String[] args) {
-        Node root = Node.createTree();
 
-        System.out.println("DFS Nodes: ".concat(root.searchByDepth().toString()));
-        System.out.println("BFS Nodes: ".concat(root.searchByBreadth().toString()));
+        String s1 = new String(new char[10]);
+        System.out.println(":" + s1.replace('\0', 'q')+":");
+        s1.replace('\0', 'p');
+        System.out.println(":"+ new String(new char[15]).replace('\0', 'p')+":");
+
+       // Node root = Node.createTree();
+
+      //  System.out.println("DFS Nodes: ".concat(root.searchByDepth().toString()));
+       // System.out.println("BFS Nodes: ".concat(root.searchByBreadth().toString()));
     }
 
 }

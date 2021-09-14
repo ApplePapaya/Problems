@@ -1,9 +1,9 @@
 package com.run.geekForgeeks;
 
 /*package whatever //do not write package name here */
-23280666447858  amazon test id
+//23280666447858  amazon test id
 
-23280666447858
+//23280666447858
 import java.util.*;
 import java.lang.*;
 import java.io.*;
@@ -19,8 +19,8 @@ class CheckIfTwoArraysAreSAme {
 		 */
 		long[] a = {8,9,7,5,3,1};
 		long[] b = {5,4,2,5,1,7};
-		String a = "sdfsdf"
-				a.conta
+		//String a = "sdfsdf"
+		//		a.conta
 		System.out.println(CheckIfTwoArraysAreEqual(a, b, 5));
 	}
 	public static int CheckIfTwoArraysAreEqual(long[] a, long[] b ,long n){

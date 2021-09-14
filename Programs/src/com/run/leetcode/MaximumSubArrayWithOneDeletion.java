@@ -21,7 +21,6 @@ public class MaximumSubArrayWithOneDeletion {
 
 	}
 	public static int findMaxSubArray(int[] arr) {
-		
-		
+	return 0;
 	}
 }

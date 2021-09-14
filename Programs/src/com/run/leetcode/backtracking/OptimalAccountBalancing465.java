@@ -80,7 +80,7 @@ public class OptimalAccountBalancing465 {
         //Ekse go through the rest of the trxns except the start. Make the start to 0 either by credit or debit and using
         //another i person and using backtracking check the number of trxn required further
         for (int i = start + 1; i < debt.size(); i++)
-            if (debt.get(start) * debt.get(i) < 0) {
+            if (debt.get(start) * debt.get(i) < 0) {// get opposite trxns to try nullifying if both positive or both negative .. it will not help
                 debt.set(i, debt.get(i) + debt.get(start));
                 r = Math.min(r, 1 + settle(start + 1, debt));
                 debt.set(i, debt.get(i) - debt.get(start));

@@ -67,7 +67,6 @@ public class EmployeeFreeTime759 {
         for (int i = 0; i < schedule.size(); i++) {
             allEmployees.add(new int[] { i, 0 });
         }
-
         List<Interval> employeesFreeTime = new ArrayList<>();
 
         int[] prev = allEmployees.peek();

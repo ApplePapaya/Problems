@@ -49,7 +49,7 @@ public class LeetCodeMainCLassSAmple {
         return output;
     }
     
-    public static int[][] stringToInt2dArray(String input) {
+   /** public static int[][] stringToInt2dArray(String input) {
         JsonArray jsonArray = JsonArray.readFrom(input);
         if (jsonArray.size() == 0) {
           return new int[0][0];
@@ -61,7 +61,7 @@ public class LeetCodeMainCLassSAmple {
           arr[i] = stringToIntegerArray(cols.toString());
         }
         return arr;
-    }
+    }**/
     
     public static String int2dArrayToString(int[][] array) {
         if (array == null) {
@@ -73,7 +73,7 @@ public class LeetCodeMainCLassSAmple {
     
         StringBuilder sb = new StringBuilder("[");
         for (int[] item : array) {
-            sb.append(Integer.toString(item));
+            sb.append((item.toString()));
             sb.append(",");
         }
     
@@ -85,7 +85,7 @@ public class LeetCodeMainCLassSAmple {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         String line;
         while ((line = in.readLine()) != null) {
-            int[][] image = stringToInt2dArray(line);
+        //    int[][] image = stringToInt2dArray(line);
             line = in.readLine();
             int sr = Integer.parseInt(line);
             line = in.readLine();
@@ -93,11 +93,11 @@ public class LeetCodeMainCLassSAmple {
             line = in.readLine();
             int newColor = Integer.parseInt(line);
             
-            int[][] ret = new Solution().floodFill(image, sr, sc, newColor);
+          //  int[][] ret = new Solution().floodFill(image, sr, sc, newColor);
             
-            String out = int2dArrayToString(ret);
+         //   String out = int2dArrayToString(ret);
             
-            System.out.print(out);
+          //  System.out.print(out);
         }
     }
 }

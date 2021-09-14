@@ -1,5 +1,9 @@
 package com.run.leetcode.medium;
 
+import javax.print.attribute.SetOfIntegerSyntax;
+import javax.sound.midi.Soundbank;
+import java.util.Arrays;
+
 /**
  * Given a n * n matrix grid of 0's and 1's only. We want to represent the grid with a Quad-Tree.
  *
@@ -70,7 +74,10 @@ package com.run.leetcode.medium;
  * Input: grid = [[1,1,0,0],[1,1,0,0],[0,0,1,1],[0,0,1,1]]
  * Output: [[0,1],[1,1],[1,0],[1,0],[1,1]]
  *
- *
+ *Time complexit - O(N^2) or O(N^2 * log(N) base 4)
+ * Since every cell is visited once atleast to check for the value int he quad.
+ * If i the worst case there is no quad of more than single, cell, there will be logN levels to the base 4 and that many
+ * times the cell will be scanned.
  *
  * Constraints:
  *
@@ -80,13 +87,17 @@ package com.run.leetcode.medium;
 public class ConstructQuadTree {
 
     public static void main(String[] args){
+
+        System.out.println(":"+ Arrays.toString(new char[5])+ ":");
+        System.out.println(":"+new String(new char[5]).replace('\0', ' ')+":");
         int[][] grid = {{1,1,0,0},{1,1,0,0},{0,0,1,1},{0,0,1,1}};
         ConstructQuadTree q = new ConstructQuadTree();
-        q.construct(grid);
+     //   q.construct(grid);
     }
 
 //Takes 0 ms
     public QNode construct(int[][] grid) {
+
         return build(grid, 0, grid.length - 1, 0, grid.length - 1);
     }
 

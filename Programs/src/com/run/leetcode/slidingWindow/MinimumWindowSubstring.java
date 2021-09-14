@@ -67,7 +67,7 @@ public class MinimumWindowSubstring {
 		if(S.equals(T)){
             return S;
         }
-		S.contains(T)
+		S.contains(T);
 		//Map<Character, Integer>  map = new HashMap<>();
 		int[] arrT = new int[256];
 		int[] arrS;// = new int[256];

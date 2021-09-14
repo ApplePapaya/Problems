@@ -94,6 +94,17 @@ public class ShortestDistanceFromAllBuildings317 {
 
     }
     int[][] dirs = new int[][] {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+
+    /**
+     * For every building do a bfs and mark all the 0 val row - column in the reach and dist matric. Add +1 to reach[row][col] .
+     * Add distance to the dist[row][col] with value of level and mark it as visited.
+     *
+     * @param grid
+     * @param row
+     * @param col
+     * @param reach
+     * @param dist
+     */
     private void bfs(int[][] grid, int row, int col, int[][] reach, int[][] dist){
         int rows = grid.length;
         int cols = grid[0].length;
@@ -106,7 +117,7 @@ public class ShortestDistanceFromAllBuildings317 {
         int d = 0;
         while(!q.isEmpty()){
             int size = q.size();
-            d++;
+            d++;//this is for next move in one of the four directions and not for the ones in the queue
             for(int i = 0 ; i < size; i++){
                 int[] curr = q.poll();
                 //will go in all 4 directions from this index

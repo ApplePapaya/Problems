@@ -2,6 +2,7 @@ package com.run.leetcode.dynamicProgramming;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -24,7 +25,35 @@ public class WordBreak {
 		set.add("code");
 		System.out.println(wordBreak2("leetcodeleetcode",set));
 	}
-	
+
+	/**
+	 Complexity Analysis
+
+	 nnn is the length of the input string.
+
+	 Time complexity : OO(n^3). There are two nested loops, and substring computation at each iteration. Overall that results in OO(n^3) time complexity.
+
+	 Space complexity : O(n). Length of ppp array is n+1n+1n+1.
+
+	 **/
+	//3ms solution
+	public boolean wordBreakn3Solution(String s, List<String> wordDict) {
+		boolean[] dp = new boolean[s.length() + 1];
+		Set<String> set = new HashSet<>();
+		set.addAll(wordDict);
+
+		dp[0] = true;
+		//Time complexity : O(n3)O(n^3)O(n3). There are two nested loops, and substring computation at each iteration. Overall that results in O(n3)O(n^3)O(n3) time complexity.
+		for (int i = 1; i <= s.length(); i++) {
+			for (int j = i - 1; j >= 0; j--) {
+				dp[i] = dp[j] && set.contains(s.substring(j, i));
+				if(dp[i]) break;
+			}
+		}
+		return dp[s.length()];
+	}
+
+
 	//Below is O(mn)  size of string * size of dict. if dict is big then its not efficent
 	public static boolean wordBreak(String s, Set<String> dict) {
         boolean[] t = new boolean[s.length()+1];

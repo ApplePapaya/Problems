@@ -27,8 +27,10 @@ import java.util.TreeMap;
  *
  */
 public class DepthOfBSTGivenInsertionOrder {
-
-    public int maxDepthBST(int[] order) {
+public static void main(String[] args){
+    System.out.println(maxDepthBST(new int[]{5,4,3,1,2,3}));
+}
+    public static int maxDepthBST(int[] order) {
         int n = order.length, maxDepth = 1;
 
         // our map will associate a value in our BST to its depth

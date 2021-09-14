@@ -48,6 +48,11 @@ public class ConnectingCitiesWithMinimumCost1135 {
      *     Pop the edge with least cost:
      *         if the edge does NOT exist in the MST(visited set), add its cost to total cost and add new edges starting from the end node to the queue.
      *         if the edge does exist in the MST(visted set)
+     *         Minimum Spanning Tree: In an undirected weighted graph, there is a tree (N nodes, N - 1 edges so no circle) that connects all nodes in the graph, and the sum of path weights are minimum.
+     *
+     * Kruskal's Algorithm: The approach to find the Minimum Spanning Tree in the Graph. We sort the edges by weight in non - descending order and loop sorted edges, pick the edge as long as there are no connectivity already set up between two nodes and add this edge weight to the total weight.
+     *
+     * Disjoint Set: The data structure used to check the connectivity of graph efficiently in dynamic by union the nodes into one set, and find the number of disconnected sets.
      * @param N
      * @param connections
      * @return
@@ -87,11 +92,65 @@ public class ConnectingCitiesWithMinimumCost1135 {
 
     /**
      * Kruskal Algorithm using union find
+     *
+
+     Time complexity: Assuming NNN to be the total number of nodes (cities) and MMM to be the total number of edges (connections). Sorting all the MMM connections will take O(M?logM).
+     Performing union find each time will take log??N\log^{\ast} Nlog?N (Iterated logarithm). Hence for M edges, it's O(M?log??N)O(M \cdot \log^{\ast} N)O(M?log?N) which is practically O(M)O(M)O(M) as the value of iterated logarithm, log??N\log^{\ast} Nlog?N never exceeds 5.
+
+     Space complexity: O(N), space required by parents and weights.
+
      */
 
+    int[] parent;
+    int n;
 
+    private void union(int x, int y) {
+        int px = find(x);
+        int py = find(y);
+
+        if (px != py) {
+            parent[px] = py;
+            n--;
+        }
+    }
+
+    private int find(int x) {
+        if (parent[x] == x) {
+            return parent[x];
+        }
+        parent[x] = find(parent[x]); // path compression
+        return parent[x];
+    }
+
+    public int minimumCost22(int N, int[][] connections) {
+        parent = new int[N + 1];
+        n = N;
+        for (int i = 0; i <= N; i++) {
+            parent[i] = i;
+        }
+
+        Arrays.sort(connections, (a, b) -> (a[2] - b[2]));
+
+        int res = 0;
+
+        for (int[] c : connections) {
+            int x = c[0], y = c[1];
+            if (find(x) != find(y)) {
+                res += c[2];
+                union(x, y);
+            }
+        }
+
+        return n == 1 ? res : -1;
+    }
 //22ms
 
+    /**
+     * 43cfcvf
+     * @param N
+     * @param connections
+     * @return
+     */
     public int minimumCostKruskal(int N, int[][] connections) {
 
 

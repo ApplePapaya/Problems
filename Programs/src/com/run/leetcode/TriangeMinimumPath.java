@@ -15,8 +15,9 @@ public class TriangeMinimumPath {
 		  int[] result = new int[n+1];
 		  
 		  for(int i = n-1; i >= 0; i--) {
-			  L
+
 		  }
+		  return 0;
 	  }
 
 }

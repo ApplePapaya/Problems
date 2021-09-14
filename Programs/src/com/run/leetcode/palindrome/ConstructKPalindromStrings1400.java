@@ -106,6 +106,7 @@ import java.util.concurrent.locks.Condition;
  */
 public class ConstructKPalindromStrings1400 {
 
+
     public boolean canConstruct(String s, int k) {
 
 

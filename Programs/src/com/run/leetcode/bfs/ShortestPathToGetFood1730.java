@@ -58,6 +58,22 @@ import java.util.Queue;
  *     The grid contains exactly one '*'.
  */
 public class ShortestPathToGetFood1730 {
+    /**
+     * Steps
+     *
+     * 1> Check if the grid is null or empty, then return -1.
+     * 2> Create a visited boolean matrix of same dimensions as grid.
+     * 3> Create a queue to do BFS.
+     * 4> Find the location of the person by iterating over the matrix # and add it to the queue
+     * 5> while queue is not empty, poll the first entry
+     * 6> Either have steps as separate variable or make it part of the queue int array.
+     * 7> From here explore all directions and for the new row column, check if they are valid meaning, within the
+     * matrix, not visited and not a wall.. If yes then just continue with rest of the etnries in theq ueue.
+     * 8> If we have reached the food, return the steps.
+     * 9> Else mark it as visited and add it to the queue, increment the step if part of queue or increment post the
+     * directions for loop is done
+     *
+     */
     public int getFood(char[][] grid) {
         if(grid == null || grid.length == 0) {
             return -1;
@@ -100,5 +116,62 @@ public class ShortestPathToGetFood1730 {
         }
 
         return -1;
+    }
+    /**
+     * Another way where each section is broken
+     */
+
+    int[][] dirs = new int[][]{{1,0},{0,1},{-1,0},{0,-1}};
+
+    public int getFood2(char[][] grid) {
+
+        int m = grid.length;
+        int n = grid[0].length;
+
+        Queue<int[]> q = new LinkedList<>();
+        q.add(findStart(grid));
+
+        boolean[][] visited = new boolean[m][n];
+
+        int step=0;
+        while(!q.isEmpty()){
+            int len = q.size();
+            for(int i=0; i < len; i++){
+                int[] pos = q.poll();
+
+                int x = pos[0];
+                int y = pos[1];
+
+                if(grid[x][y] == '#') return step;
+
+                for(int[] dir: dirs){
+                    int newX = x + dir[0];
+                    int newY = y + dir[1];
+
+                    if(isValid(grid, newX, newY) && !visited[newX][newY]){
+                        visited[newX][newY] = true;
+                        q.offer(new int[]{newX, newY});
+                    }
+                }
+            }
+            step++;
+        }
+
+        return -1;
+    }
+
+    private int[] findStart(char[][] grid){
+        for(int i=0; i < grid.length; i++){
+            for(int j=0; j < grid[0].length; j++){
+                if(grid[i][j] == '*'){
+                    return new int[]{i, j};
+                }
+            }
+        }
+        throw new RuntimeException();
+    }
+
+    private boolean isValid(char[][] grid, int i, int j){
+        return i >= 0 && i < grid.length && j >= 0 && j < grid[0].length && grid[i][j] != 'X';
     }
 }
