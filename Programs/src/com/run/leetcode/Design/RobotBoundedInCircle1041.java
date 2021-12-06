@@ -25,7 +25,7 @@ public class RobotBoundedInCircle1041 {
         //check for valid input
         if(instructions.length() == 0)
             return false;
-        //north = 0, east = 1, south = 1, west = 1;
+        //north = 0, east = 1, south = 2, west = 3;
         int[][] directions = new int[][]{{0,1}, {1,0}, {0,-1}, {-1,0}};
         // Initial position is center
         int x =0, y=0;

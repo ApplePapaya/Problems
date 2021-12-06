@@ -69,6 +69,10 @@ import java.util.Set;
 
 public class RobotRoomCleaner489 {
     /**
+     * This solution is based on the same idea as maze solving algorithm called right-hand rule.
+     * Go forward, cleaning and marking all the cells on the way as visited.
+     * At the obstacle turn right, again go forward, etc. Always turn right at the obstacles and then go forward.
+     * Consider already visited cells as virtual obstacles.
      * Algorithm
      *
      * Time to write down the algorithm for the backtrack function backtrack(cell = (0, 0), direction = 0).
@@ -90,8 +94,9 @@ public class RobotRoomCleaner489 {
      *             Turn right because now there is an obstacle (or a virtual obstacle) just in front.
      */
     // going clockwise : 0: 'up', 1: 'right', 2: 'down', 3: 'left'
-    int[][] directions = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
-    Set<int[]> visited = new HashSet();
+    int[][] directions = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+ //   Set<Pair<Integer, Integer>> visited = new HashSet();
+ Set<String> visited = new HashSet();
     Robot robot;
 
     public void goBack() {
@@ -103,7 +108,7 @@ public class RobotRoomCleaner489 {
     }
 
     public void backtrack(int row, int col, int d) {
-        visited.add(new int[] {row, col});
+        visited.add(row +"-" + col);
         robot.clean();
         // going clockwise : 0: 'up', 1: 'right', 2: 'down', 3: 'left'
         for (int i = 0; i < 4; ++i) {
@@ -111,7 +116,7 @@ public class RobotRoomCleaner489 {
             int newRow = row + directions[newD][0];
             int newCol = col + directions[newD][1];
 
-            if (!visited.contains(new int[] {newRow, newCol}) && robot.move()) {
+            if (!visited.contains(newRow+"-"+newCol) && robot.move()) {
                 backtrack(newRow, newCol, newD);
                 goBack();
             }

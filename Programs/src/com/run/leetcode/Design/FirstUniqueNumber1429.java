@@ -168,3 +168,78 @@ public class FirstUniqueNumber1429 {
  }
 
  **/
+
+class FirstUniqueNumber{
+    //https://leetcode.com/problems/first-unique-number/discuss/601107/JavaPython-3-DoublyLinkedList-and-LinkedHashSetdict-O(n)-2-neat-codes-w-analysis.
+    class DLLNode {
+        int val;
+        DLLNode next;
+        DLLNode prev;
+        public DLLNode(int val) {
+            this.val = val;
+        }
+    }
+    HashMap<Integer, DLLNode> nodeMap;
+    DLLNode head;
+    DLLNode tail;
+
+    public FirstUniqueNumber(int[] nums) {
+        nodeMap = new HashMap<>();
+        head = new DLLNode(0);
+        tail = new DLLNode(0);
+        head.next = tail;
+        tail.prev = head;
+        for(int num : nums) {
+            add(num);
+        }
+    }
+
+    public int showFirstUnique() {
+        return head.next == tail ? -1 : head.next.val;
+    }
+
+    public void add(int value) {
+        // DLLNode newNode = new DLLNode(value);
+        // DLLNode curNode = nodeMap.putIfAbsent(value, newNode);
+        // if(curNode == null) {
+        //     add(newNode);
+        // } else {
+        //     remove(newNode);
+        // }
+        if(nodeMap.containsKey(value)){
+            remove(nodeMap.get(value));
+        } else {
+            DLLNode newNode = new DLLNode(value);
+            nodeMap.put(value, newNode);
+            add(newNode);
+        }
+    }
+
+    private void remove(DLLNode node) {
+        if(node.prev == null && node.next == null) {
+            return;
+        }
+
+        DLLNode prevNode = node.prev;
+        DLLNode nextNode = node.next;
+
+        prevNode.next = nextNode;
+        nextNode.prev = prevNode;
+
+        node.prev = null;
+        node.next = null;
+    }
+
+    private void add(DLLNode node) {
+        // if(tail == null || tail.prev == null) {
+        //     return;
+        // }
+        DLLNode prevNode = tail.prev;
+
+        prevNode.next = node;
+        node.prev = prevNode;
+
+        node.next = tail;
+        tail.prev = node;
+    }
+}

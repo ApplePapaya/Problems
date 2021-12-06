@@ -10,7 +10,7 @@ public class ConnectingCitiesWithMinimumCost1135 {
      * 1135. Connecting Cities With Minimum Cost
      * Medium
      *
-     * There are n cities numbered from 1 to n.
+     * There are n cities numbered from 1 to n.n
      *
      * You are given connections, where each connections[i] = [city1, city2, cost] represents the cost to connect city1 and city2 together.  (A connection is bidirectional: connecting city1 and city2 is the same as connecting city2 and city1.)
      *

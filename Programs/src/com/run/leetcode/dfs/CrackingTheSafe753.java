@@ -1,8 +1,6 @@
 package com.run.leetcode.dfs;
 
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 /**
  * De Bruijn sequence
  * The sequence can be used to shorten a brute-force attack on a PIN-like code lock that does not have an
@@ -58,8 +56,34 @@ public class CrackingTheSafe753 {
 //10100011020021112012122022210
     public static void main(String[] args) {
         CrackingTheSafe753 c = new CrackingTheSafe753();
-        System.out.println(c.crackSafe3(3, 3));
+        System.out.println(c.crackSafe22(3, 3));
 
+    }
+
+
+    public String crackSafe22(int n, int k) {
+
+        //only 1 digit password so we try all possible values from 0 to k -1;
+        if (n == 1) return "0123456789".substring(0, k);
+        //password can only be 0s
+        if (k == 1) return "0000".substring(4-n);
+
+        Map<String, Integer> suffixMap = new HashMap<>();
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < n - 1;  i++)
+            result.append("0");
+
+        for (int i = 0; i < Math.pow(k, n); i++) {
+            //get the last suffix in result string
+            String suffix = result.substring(result.length() - n + 1);
+            //the map record the next digit to append once the current suffix showed later as prefix
+            //for each prefix the value start from 'k-1' and decreased to '0')
+            System.out.println("@@"+ (suffixMap.getOrDefault(suffix, k) - 1));
+            suffixMap.put(suffix, suffixMap.getOrDefault(suffix, k) - 1);
+            result.append(suffixMap.get(suffix));
+        }
+
+        return result.toString();
     }
     public String crackSafe(int n, int k) {
         // String is immutable, use StringBuilder

@@ -1,4 +1,4 @@
-package com.run.leetcode.arrays;
+package com.run.leetcode.slidingWindow;
 
 import java.util.Deque;
 import java.util.LinkedList;
@@ -87,10 +87,10 @@ public class SlidingWindowMaximum239 {
             while(deque.isEmpty() == false && nums[deque.peekLast()] < nums[i])
                 deque.removeLast();
 
-            deque.offer(i);
+            deque.offerLast(i);
 
             if(i + 1 >= k)// i + 1 indicates the number of elements traverssed. if thats equal to k then we shd have the max value at the start of the peek
-                result[i + 1 - k] = nums[deque.peek()];
+                result[i + 1 - k] = nums[deque.peekFirst()];
         }
         return result;
 

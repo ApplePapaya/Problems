@@ -32,7 +32,28 @@ import java.util.Map;
  */
 public class LongestSubstringwithAtMostKDistinctCharacters340 {
     //A more generic solution as follows, can be solution for Unicode string:
+    public int lengthOfLongestSubstringKDistinctMoreClear(String s, int k) {
+        int[] count = new int[256];     // there are 256 ASCII characters in the world
 
+        int i = 0;  // i will be behind j
+        int num = 0;
+        int res = 0;
+
+        for (int j = 0; j < s.length(); j++) {
+            if (count[s.charAt(j)]++ == 0) {    // if count[s.charAt(j)] == 0, we know that it is a distinct character
+                num++;
+            }
+            while (num > k ) {     // sliding window
+                count[s.charAt(i)]--;
+                if (count[s.charAt(i)] == 0){
+                    num--;
+                }
+                i++;
+            }
+            res = Math.max(res, j - i + 1);
+        }
+        return res;
+    }
     public int lengthOfLongestSubstringKDistinctUnicode(String s, int k) {
         Map<Character, Integer> map = new HashMap<>();
         int left = 0;

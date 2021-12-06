@@ -1,4 +1,4 @@
-package com.example.graphTraversals;
+package com.run.leetcode.bfs;
 
 import java.util.ArrayList;
 import java.util.HashMap;

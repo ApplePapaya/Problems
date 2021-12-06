@@ -61,7 +61,7 @@ import java.util.List;
         int times;
         List<TrieNode> hot;
 
-        public TrieNode() {
+      public TrieNode() {
             children = new TrieNode[128];
             s = null;
             times = 0;
@@ -70,10 +70,10 @@ import java.util.List;
 
         public int compareTo(TrieNode o) {
             if (this.times == o.times) {
-                return this.s.compareTo(o.s);
+                return this.s.compareTo(o.s);//ascending
             }
 
-            return o.times - this.times;
+            return o.times - this.times;//descending
         }
 
         public void update(TrieNode node) {

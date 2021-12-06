@@ -1,4 +1,4 @@
-package com.run.leetcode.dynamicProgramming;
+package com.run.leetcode.arrays.maxArithmetic;
 
 import java.util.ArrayList;
 import java.util.Comparator;
